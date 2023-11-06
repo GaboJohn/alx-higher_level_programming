@@ -1,0 +1,62 @@
+#include "lists.h"
+#include <stdlib.h>
+#include <stdio.h>
+
+/**
+* add_nodeint - adds a new node at the beginning of a listint_t list
+* @head: head of listint_t
+* @n: int to add in listint_t list
+* Return: address of the new element, or NULL if it failed
+*/
+listint_t *add_nodeint(listint_t **head, const int n)
+{
+	listint_t *new;
+
+	new = malloc(sizeof(listint_t));
+	if (new == NULL)
+		return (NULL);
+	new->n = n;
+	new->next = *head;
+	*head = new;
+	return (new);
+}
+/**
+* is_palindrome - identify if a singly linked list is a palindrome
+* @head: head of listint_t
+* Return: 1 if it is a palindrome, else 0
+*/
+int is_palindrome(listint_t **head)
+{
+	listint_t *slow = *head;
+	listint_t *fast = *head;
+	listint_t *prev = NULL;
+	listint_t *next;
+
+	if (*head == NULL || (*head)->next == NULL)
+		return (1);
+	while (fast != NULL && fast->next != NULL)
+	{
+		fast = fast->next->next;
+		prev = slow;
+		slow = slow->next;
+	}
+	if (fast != NULL)
+		slow = slow->next;
+	prev->next = NULL;
+	while (slow != NULL)
+	{
+		next = slow->next;
+		slow->next = prev;
+		prev = slow;
+		slow = next;
+	}
+	slow = prev;
+	while (*head != NULL && slow != NULL)
+	{
+		if ((*head)->n != slow->n)
+			return (0);
+		*head = (*head)->next;
+		slow = slow->next;
+	}
+	return (1);
+}
