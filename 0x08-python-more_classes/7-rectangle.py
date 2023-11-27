@@ -2,7 +2,12 @@
 """Defines a class of rectangle"""
 
 class Rectangle:
-    """Represents a rectangle"""
+    """Represents a rectangle.
+
+    Attributes:
+        number_of_instances (int): rectangle instances
+        print_symbol (any): symbol used for string representation
+        """
 
     number_of_instances = 0
     print_symbol = "#"
