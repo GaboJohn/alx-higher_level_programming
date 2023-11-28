@@ -1,3 +1,4 @@
 #!/usr/bin/python3
 def magic_string():
-    return '\n'.join(['BestSchool' * i + '$' for i in range(1, 11)])
+    magic_string.x = getattr(magic_string, 'x', 0) + 1
+    return ", ".join(["BestSchool" for _ in range(magic_string.x)])
