@@ -89,7 +89,7 @@ class Rectangle(Base):
         for _ in range(self.height):
             print(" " * self.x + "#" * self.width)
     
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """Assign arguments to attributes in order: id, width, height, x, y."""
         if args:
             self.id = args[0] if len(args) > 0 else self.id
@@ -97,6 +97,12 @@ class Rectangle(Base):
             self.height = args[2] if len(args) > 2 else self.height
             self.x = args[3] if len(args) > 3 else self.x
             self.y = args[4] if len(args) > 4 else self.y
+        elif kwargs:
+            self.id = kwargs.get('id', self.id)
+            self.width = kwargs.get('width', self.width)
+            self.height = kwargs.get('height', self.height)
+            self.x = kwargs.get('x', self.x)
+            self.y = kwargs.get('y', self.y)
 
     def __str__(self):
         """Return a string representation of the rectangle."""
