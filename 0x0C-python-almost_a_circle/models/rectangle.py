@@ -98,11 +98,20 @@ class Rectangle(Base):
             self.x = args[3] if len(args) > 3 else self.x
             self.y = args[4] if len(args) > 4 else self.y
         elif kwargs:
-            self.id = kwargs.get('id', self.id)
-            self.width = kwargs.get('width', self.width)
-            self.height = kwargs.get('height', self.height)
-            self.x = kwargs.get('x', self.x)
-            self.y = kwargs.get('y', self.y)
+            self.id = int(kwargs.get('id', self.id))
+            self.width = int(kwargs.get('width', self.width))
+            self.height = int(kwargs.get('height', self.height))
+            self.x = int(kwargs.get('x', self.x))
+            self.y = int(kwargs.get('y', self.y))
+
+        if not isinstance(self.width, int) or self.width <= 0:
+            raise ValueError("width must be a positive integer")
+        if not isinstance(self.height, int) or self.height <= 0:
+            raise ValueError("height must be a positive integer")
+        if not isinstance(self.x, int) or self.x < 0:
+            raise ValueError("x must be a non-negative integer")
+        if not isinstance(self.y, int) or self.y < 0:
+            raise ValueError("y must be a non-negative integer")
 
     def __str__(self):
         """Return a string representation of the rectangle."""
