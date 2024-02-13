@@ -15,4 +15,3 @@ for (const n in num) {
   newDict[num[n]] = x;
 }
 console.log(newDict);
-
