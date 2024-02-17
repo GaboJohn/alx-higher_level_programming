@@ -17,4 +17,3 @@ if __name__ == "__main__":
     for x in (session.query(State.name, City.id, City.name)
                      .filter(State.id == City.state_id)):
         print(x[0] + ": (" + str(x[1]) + ") " + x[2])
-
