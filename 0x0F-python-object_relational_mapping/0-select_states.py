@@ -4,7 +4,9 @@ import MySQLdb
 import sys
 
 
-if __name__ == "__main__":
+def list_states():
+    """List all states from the hbtn_0e_0_usa database."""
+
     database = MySQLdb.connect(host="localhost", user=sys.argv[1],
                          password=sys.argv[2], database=sys.argv[3], port=3306)
     
@@ -19,4 +21,7 @@ if __name__ == "__main__":
     
     cursor.close()
     database.close()
+
+if __name__ == "__main__":
+    list_states()
 
