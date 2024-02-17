@@ -5,10 +5,10 @@ import sys
 
 
 if __name__ == "__main__":
-    db = MySQLdb.connect(host="localhost", user=sys.argv[1],
-                         passwd=sys.argv[2], db=sys.argv[3], port=3306)
+    database = MySQLdb.connect(host="localhost", user=sys.argv[1],
+                         password=sys.argv[2], database=sys.argv[3], port=3306)
     
-    cursor = db.cursor()
+    cursor = database.cursor()
     
     cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
     
@@ -18,5 +18,5 @@ if __name__ == "__main__":
         print(row)
     
     cursor.close()
-    db.close()
+    database.close()
 
